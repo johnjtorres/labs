@@ -1,1 +1,1 @@
-# labs
+Repository of lab files and configs.
