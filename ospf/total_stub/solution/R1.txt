@@ -1,0 +1,160 @@
+  
+  
+!
+! Last configuration change at 21:34:41 UTC Thu Jun 23 2022
+!
+version 15.8
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 61
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name jtlab.local
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username cisco secret 5 $1$StDY$jGK0BW.pNNZRYO0Rh4m22/
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ no shutdown
+ ip address 1.1.1.1 255.255.255.0
+ ip ospf network point-to-point
+!
+interface Loopback1
+ no shutdown
+ ip address 172.16.0.1 255.255.255.0
+ ip ospf network point-to-point
+!
+interface Loopback2
+ no shutdown
+ ip address 172.16.1.1 255.255.255.0
+ ip ospf network point-to-point
+!
+interface Loopback3
+ no shutdown
+ ip address 172.16.2.1 255.255.255.0
+ ip ospf network point-to-point
+!
+interface Loopback4
+ no shutdown
+ ip address 172.16.3.1 255.255.255.0
+ ip ospf network point-to-point
+!
+interface GigabitEthernet0/0
+ no shutdown
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ area 1 stub no-summary
+ network 1.1.1.1 0.0.0.0 area 0
+ network 172.16.0.1 0.0.0.0 area 0
+ network 172.16.1.1 0.0.0.0 area 0
+ network 172.16.2.1 0.0.0.0 area 0
+ network 172.16.3.1 0.0.0.0 area 0
+ network 192.168.12.1 0.0.0.0 area 1
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner exec ^C ^C
+banner incoming ^C ^C
+banner login ^C ^C
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+ transport preferred none
+line aux 0
+line vty 0 4
+ exec-timeout 0 0
+ logging synchronous
+ login local
+ transport preferred none
+ transport input ssh
+!
+no scheduler allocate
+!
+end

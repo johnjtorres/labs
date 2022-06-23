@@ -1,0 +1,6 @@
+conf t
+username cisco secret cisco
+ip domain-name jtlab.local
+crypto key generate rsa general-keys modulus 2048
+ip ssh version 2
+end
