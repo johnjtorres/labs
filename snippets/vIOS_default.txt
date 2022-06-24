@@ -102,9 +102,9 @@ ipv6 ioam timestamp
 !
 control-plane
 !
-banner exec ^C ^C
-banner incoming ^C ^C
-banner login ^C ^C
+banner exec # #
+banner incoming # #
+banner login # #
 !
 line con 0
  exec-timeout 0 0
