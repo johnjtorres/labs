@@ -58,32 +58,24 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- no shutdown
- no ip address
  shutdown
  duplex auto
  speed auto
  media-type rj45
 !
 interface GigabitEthernet0/1
- no shutdown
- no ip address
  shutdown
  duplex auto
  speed auto
  media-type rj45
 !
 interface GigabitEthernet0/2
- no shutdown
- no ip address
  shutdown
  duplex auto
  speed auto
  media-type rj45
 !
 interface GigabitEthernet0/3
- no shutdown
- no ip address
  shutdown
  duplex auto
  speed auto
